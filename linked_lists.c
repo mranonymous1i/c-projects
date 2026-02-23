@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Node struct, representing each node of the linked list
 typedef struct Node{
   int data;
   struct Node *next;
 } Node;
 
-void extract(Node** list, int requested);
+//Function declarations
+int extract(Node** list, int requested);
 void insert_head(Node** list, int data);
 void insert_tail(Node** list, int data);
 void print_list(Node** list);
 
+//main function
 int main(void){
   Node *linkedList = malloc(sizeof(Node));
   linkedList->data = 10;
@@ -28,7 +31,8 @@ int main(void){
   return 0;
 }
 
-void extract(Node** list, int requested){
+//extract function removes the first instance of a node with the matching requested data in it if it exists, returning 1, otherwise returns -1;
+int extract(Node** list, int requested){
   
   Node *current = *list;
   Node *temp = NULL;
@@ -39,17 +43,21 @@ void extract(Node** list, int requested){
         Node* new_list = current->next;
         free(current);
         *list = new_list;
+        return 1;
       }
       else{
         temp->next = current->next;
         free(current);
+        return 1;
       }
     }
     temp = current;
     current = current->next;
   }
+  return -1;
 }
 
+//inserts a node as the new head of the linked list with the given data
 void insert_head(Node** list, int data){
   Node *new_list = malloc(sizeof(Node));
   new_list->data = data;
@@ -57,6 +65,7 @@ void insert_head(Node** list, int data){
   *list = new_list;
 }
 
+//inserts a node at the end of the linked list with the given data
 void insert_tail(Node** list, int data){
   Node *current = *list;
   Node *new_node = malloc(sizeof(Node));
@@ -71,6 +80,7 @@ void insert_tail(Node** list, int data){
   current->next = new_node;
 }
 
+//prints all the data stored in the nodes of the linked list
 void print_list(Node** list){
   Node *current = *list;
 
