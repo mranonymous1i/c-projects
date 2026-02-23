@@ -9,6 +9,7 @@ typedef struct Node{
 
 //Function declarations
 int extract(Node** list, int requested);
+int search(Node** list, int requested);
 void insert_head(Node** list, int data);
 void insert_tail(Node** list, int data);
 void print_list(Node** list);

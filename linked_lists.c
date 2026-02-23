@@ -20,7 +20,16 @@ int main(void){
   return 0;
 }
 
-//extract function removes the first instance of a node with the matching requested data in it if it exists, returning 1, otherwise returns -1;
+//searches the list to find the first node with the requested data in it and returns 1. If no node with the appropriate data exists, it returns -1.
+int search(Node** list, int requested){
+  Node *current = *list;
+  while(current != NULL){
+    if(current->data == requested) return 1;
+    current = current->next;
+  }
+  return -1;
+}
+//extract function removes the first instance of a node with the matching requested data in it if it exists, returning 1, otherwise returns -1.
 int extract(Node** list, int requested){
   
   Node *current = *list;
@@ -46,7 +55,7 @@ int extract(Node** list, int requested){
   return -1;
 }
 
-//inserts a node as the new head of the linked list with the given data
+//inserts a node as the new head of the linked list with the given data.
 void insert_head(Node** list, int data){
   Node *new_list = malloc(sizeof(Node));
   new_list->data = data;
@@ -54,7 +63,7 @@ void insert_head(Node** list, int data){
   *list = new_list;
 }
 
-//inserts a node at the end of the linked list with the given data
+//inserts a node at the end of the linked list with the given data.
 void insert_tail(Node** list, int data){
   Node *current = *list;
   Node *new_node = malloc(sizeof(Node));
@@ -69,7 +78,7 @@ void insert_tail(Node** list, int data){
   current->next = new_node;
 }
 
-//prints all the data stored in the nodes of the linked list
+//prints all the data stored in the nodes of the linked list.
 void print_list(Node** list){
   Node *current = *list;
 
