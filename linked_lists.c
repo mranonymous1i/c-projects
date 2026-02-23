@@ -2,24 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//main function
-int main(void){
-  Node *linkedList = malloc(sizeof(Node));
-  linkedList->data = 10;
-  linkedList->next = NULL;
-
-  Node *empty = NULL;
-
-  print_list(&empty);
-  insert_head(&linkedList, 10);
-  print_list(&linkedList);
-  insert_tail(&linkedList, 6);
-  print_list(&linkedList);
-
-  free(linkedList);
-  return 0;
-}
-
 //searches the list to find the first node with the requested data in it and returns 1. If no node with the appropriate data exists, it returns -1.
 int search(Node** list, int requested){
   Node *current = *list;
