@@ -1,5 +1,5 @@
-#ifndef LINKED_LIST.H
-#define LINKED_LIST.H
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
 
 //Node struct, representing each node of the linked list
 typedef struct Node{
