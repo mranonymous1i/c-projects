@@ -8,6 +8,7 @@ typedef struct Node{
 } Node;
 
 //Function declarations
+
 int list_extract(Node** list, int requested);
 int list_search(Node** list, int requested);
 void insert_head(Node** list, int data);
