@@ -34,3 +34,11 @@ int hash_extract(Node** list[SIZE], char word[]){
 
   return list_extract(list[index], data);
 }
+
+//Inserts a data value if it does not exist already into the hashmap
+void hash_insert(Node** list[SIZE], char word[]){
+  int data = hash(word);
+  int index = data % 10;
+
+  insert_tail(list[index], data);
+}
