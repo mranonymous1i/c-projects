@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 //searches the list to find the first node with the requested data in it and returns 1. If no node with the appropriate data exists, it returns -1.
-int search(Node** list, int requested){
+int list_search(Node** list, int requested){
   Node *current = *list;
   while(current != NULL){
     if(current->data == requested) return 1;
@@ -12,7 +12,7 @@ int search(Node** list, int requested){
   return -1;
 }
 //extract function removes the first instance of a node with the matching requested data in it if it exists, returning 1, otherwise returns -1.
-int extract(Node** list, int requested){
+int list_extract(Node** list, int requested){
   
   Node *current = *list;
   Node *temp = NULL;
