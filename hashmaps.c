@@ -11,9 +11,12 @@ int hash(char word[]){
   return res;
 }
 
-//Using list_search, searches for the desired word in the hashmap. Returns 1 if it exists, and -1 is if does not;
+//Using list_search, searches for the desired word in the hashmap. Returns the index of where it exists, and -1 is if does not exist;
 int hash_search(Hashmap* map, char word[]){
-  return list_search(map->table[hash(word) % map->size], word);
+  if(list_search(map->table[hash(word) % map->size], word) == 1){
+    return hash(word) % map->size;
+  }
+  return -1;
 }
 
 //Extracts the requested data from the hashmap using list_extract. If the data exists, it is removed and returns 1. If not, it returns -1;
@@ -23,6 +26,6 @@ int hash_extract(Hashmap* map, char word[]){
 
 //Inserts a data value if it does not exist already into the hashmap
 void hash_insert(Hashmap* map, char word[]){
-  if(hash_search(map, word) != 1)
+  if(hash_search(map, word) == -1)
     list_insert(&map->table[hash(word) % map->size], word);
 }
