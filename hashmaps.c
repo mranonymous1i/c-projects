@@ -20,25 +20,17 @@ int hash(char word[]){
 }
 
 //Using list_search, searches for the desired word in the hashmap. Returns 1 if it exists, and -1 is if does not;
-int hash_search(Node** list[SIZE], char word[]){
-  int data = hash(word);
-  int index = data % 10;
-
-  return list_search(list[index], data);
+int hash_search(Node* list[], char word[]){
+  return list_search(list[hash(word) % 10], word);
 }
 
 //Extracts the requested data from the hashmap using list_extract. If the data exists, it is removed and returns 1. If not, it returns -1;
-int hash_extract(Node** list[SIZE], char word[]){
-  int data = hash(word);
-  int index = data % 10;
-
-  return list_extract(list[index], data);
+int hash_extract(Node* list[], char word[]){
+  return list_extract(&list[hash(word) % 10], word);
 }
 
 //Inserts a data value if it does not exist already into the hashmap
-void hash_insert(Node** list[SIZE], char word[]){
-  int data = hash(word);
-  int index = data % 10;
-
-  insert_tail(list[index], data);
+void hash_insert(Node* list[], char word[]){
+  if(hash_search(list[hash(word) % 10], word) != 1)
+    insert(&list[hash(word) % 10], word);
 }
