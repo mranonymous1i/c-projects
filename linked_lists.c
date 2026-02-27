@@ -48,7 +48,7 @@ void insert_head(Node** list, const char word[]){
 }
 
 //inserts a node at the end of the linked list with the given key.
-void insert(Node** list, const char word[]){
+void list_insert(Node** list, const char word[]){
   Node *current = *list;
   Node *new_node = malloc(sizeof(Node));
   new_node->key = strdup(word);
