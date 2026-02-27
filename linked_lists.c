@@ -52,7 +52,10 @@ void insert_tail(Node** list, int data){
   new_node->data = data;
   new_node->next = NULL;
 
-  if(list == NULL) *list = new_node;
+  if(*list == NULL){
+    *list = new_node;
+    return;
+  }
 
   while(current->next != NULL){
     current = current->next;
